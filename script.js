@@ -150,7 +150,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const result = await response.json(); // Парсим JSON ответ от сервера
             console.log("Успешный JSON-ответ от сервера:", result);
 
-            if (result.status === 'success') {
+            if (response.status === 201 && result.id) {
                 responseMessageDiv.innerHTML = `<p class="success">${result.message || 'Ваши данные успешно отправлены!'}</p>`;
                 contactForm.reset(); // Очищаем форму после успешной отправки
                 console.log("Форма успешно отправлена и очищена. Сервер вернул успех.");
@@ -704,3 +704,4 @@ document.addEventListener('DOMContentLoaded', aggressiveTiltAnimation);
 // document.addEventListener('DOMContentLoaded', initStrongTiltAnimation);
 
 // document.addEventListener('DOMContentLoaded', dynamicTiltAnimation);
+
