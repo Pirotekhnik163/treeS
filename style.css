@@ -1,0 +1,2087 @@
+body {
+    font-family: 'Mulish', sans-serif;
+    margin: 0; /* ← Явно убираем отступы у body */
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* Убираем все отступы по умолчанию */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.payment-button:hover,
+.payment-btn:hover,
+.emotion-btn:hover,
+.submit-button:hover {
+    transform: scale(1.02);
+    box-shadow: 0 15px 25px 0 rgba(74, 164, 96, 0.1);
+}
+
+
+/*#region шапка  - head */
+
+/* ШАПКА САЙТА */
+.header {
+    width: 100%;
+    height: 80px;
+    position: absolute;
+    top: 0; /* Прижимаем к самому верху */
+    left: 0;
+    z-index: 1000;
+    padding-top: 48px; /* ← Отступ ВНУТРИ шапки */
+    background: transparent; /* Прозрачный фон */
+}
+
+.header__container {
+    width: 1400px;
+    height: 100%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center; /* Должно быть уже center */
+}
+
+/* 🎨 ЛОГОТИП */
+.header__logo {
+    height: 40px;
+}
+
+.logo-img {
+    width: 114.79px;
+    height: 39px;
+    object-fit: contain;
+    /* Убираем любые отступы которые могли сдвинуть лого */
+    margin: 0;
+    padding: 0;
+}
+
+/* 🔧 НАВИГАЦИЯ */
+.header__nav {
+    display: flex;
+    gap: 32px;
+    align-items: center;
+}
+
+.nav-link {
+    align-items: center; /* Выравнивание по вертикали по центру */
+    font-family: 'Mulish', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    color: #4AA460;
+    text-decoration: none;
+    padding: 8px 16px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.logo-link {
+    display: block;
+    height: 40px;
+}
+
+.nav-link:hover {
+    background: rgba(74, 164, 96, 0.1);
+    color: #4AA460;
+}
+
+
+/*#endregion */
+
+/*#region шапка-вторая - head */
+
+
+.header--fixed {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 80px;
+    backdrop-filter: blur(15px); 
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.4); /* Белый с 50% прозрачностью */
+    border-radius: 0 0 32px 32px;
+    box-shadow: 0 9px 54px 0 rgba(161, 167, 212, 0.2);
+    padding-top: 0;
+    transform: translateY(-100%);
+    transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    z-index: 999;
+    /* Убираем backdrop-filter или добавляем только если нужно */
+    /* backdrop-filter: none; */
+}
+.header--fixed .nav-link {
+    color: #1F2937; /* Темный цвет текста для белого фона */
+}
+
+.header--fixed .nav-link:hover {
+    background: rgba(74, 164, 96, 0.1);
+    color: #4AA460;
+}
+
+.header--fixed.header--visible {
+    transform: translateY(0);
+}
+
+/*#endregion */
+
+/*#region 1_блок - HERO */
+
+
+
+
+.hero {
+    background-image: url('./images/home_bg.jpg');
+    background-size: cover;
+    background-position: center 0;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    height: 1080px;
+    padding-top: 376px;
+    border-radius: 0 0 80px 80px;
+    position: relative;
+}
+
+
+.hero__container {
+    width: 1400px;
+    margin: 0 auto; /* Только горизонтальное центрирование */
+}
+
+.hero__title + .hero__subtitle {
+    margin-top: 24px;
+}
+
+.hero__title {
+    color: #fff;
+    font-size: 64px; 
+    font-weight: 800;
+    text-align: center;
+}
+
+.hero__subtitle {
+
+    color: #fff;
+    font-size: 20px; 
+    font-weight: 600;
+    text-align: center;
+}
+
+.hero__bottom-block {
+    width: 1400px;
+    height: 523px;
+    background-color: #4AA460;
+    border-radius: 32px;
+    margin: 146px auto 0 auto;
+    padding: 16px;
+    box-shadow: 0 9px 54px 0 rgba(161, 167, 212, 0.2);
+}
+
+.bottom-block__container {
+    display: flex;           /* Горизонтальное расположение */
+    gap: 16px;              /* Расстояние между блоками */
+    height: 100%;           /* Занимает всю высоту родителя */
+}
+
+.white-block {
+    background-color: white;
+    border-radius: 16px;
+    height: 491px;
+    padding: 24px; /* Добавляем внутренние отступы */
+}
+
+.left-block {
+    width: 332px;
+}
+
+.participation-title {
+    font-family: 'Mulish', sans-serif;
+    font-size: 24px;
+    font-weight: 600; /* Semi-bold */
+    color: #111827; 
+    margin: 0; /* Убираем стандартные отступы */
+}
+
+.options-container {
+    display: flex;
+    flex-direction: column; /* Вертикальное расположение */
+    gap: 16px; /* Расстояние между элементами */
+    margin-top: 24px; /* Отступ от заголовка */
+}
+
+.option-item {
+    /* Fill x Hug - блок растягивается по ширине и обнимает контент по высоте */
+    width: 100%;
+}
+
+.option-label {
+    font-family: 'Mulish', sans-serif;
+    font-size: 14px;
+    font-weight: 400; /* Regular */
+    color: #9CA3AF;
+    display: block; /* Чтобы span занимал всю ширину */
+}
+
+/* Анимация при наведении на select-button */
+.select-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 0;
+    border: none;
+    background: transparent;
+    color: #111827;
+    font-family: 'Mulish', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    cursor: pointer;
+    margin-top: 8px;
+    transition: all 0.1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Эффект при наведении */
+.select-button:hover {
+    opacity: 0.5; /* Меняем прозрачность */
+}
+
+/* Активное состояние (при нажатии) */
+.select-button:active {
+    transform: scale(0.98); /* Легкое сжатие при клике */
+    opacity: 0.9;
+}
+
+/* Контейнер для выпадающего списка */
+.select-wrapper {
+    position: relative;
+    display: inline-block;
+}
+
+/* Выпадающее меню */
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 240px;
+    background: white;
+    border: 1px solid #E5E7EB;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    margin-top: 4px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.2s ease;
+    z-index: 1000;
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+/* Показываем меню при активном состоянии */
+.select-wrapper.active .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+/* Поворачиваем стрелку при открытии */
+.select-wrapper.active .button-icon {
+    transform: rotate(180deg);
+}
+
+/* Элементы выпадающего списка */
+.dropdown-item {
+    padding: 12px 16px;
+    font-family: 'Mulish', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    color: #111827;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    border-bottom: 1px solid #F3F4F6;
+}
+
+.dropdown-item:last-child {
+    border-bottom: none;
+}
+
+.dropdown-item:hover {
+    background-color: #F9FAFB;
+}
+
+.dropdown-item.selected {
+    background-color: #E0F6E4;
+    color: #4AA460;
+}
+
+/* Анимация для стрелки */
+.button-icon {
+    transition: transform 0.2s ease;
+}
+
+
+
+
+.button-text {
+    font-family: 'Mulish', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    color: #111827;
+}
+
+.button-icon {
+    color: #111827; /* Цвет иконки как у текста */
+}
+
+.input-container {
+    width: 100%; /* Fill */
+    margin-top: 8px;
+}
+
+.participants-input {
+    width: 100%; /* Fill */
+    height: 40px; /* Высота 40px */
+    padding: 0 12px; /* Внутренние отступы слева/справа 12px */
+    border: 1px solid #E5E7EB; /* Рамка */
+    border-radius: 8px; /* Скругление */
+    background: white;
+    
+    /* Текст */
+    font-family: 'Mulish', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    color: #111827;
+    
+    /* Выравнивание текста */
+    text-align: left;
+}
+
+/* Плейсхолдер (текст-подсказка) */
+.participants-input::placeholder {
+    color: #D1D5DB;
+    font-family: 'Mulish', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+/* При фокусе на поле */
+.participants-input:focus {
+    outline: none;
+    border-color: #6B7280; /* Можно изменить цвет при фокусе */
+}
+
+.special-options {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 8px;
+    align-items: flex-start; /* ← Добавьте эту строку */
+    width: fit-content; /* ← И эту */
+}
+
+.special-option-btn {
+    display: inline-flex;
+    align-items: center;
+    height: 40px;
+    padding: 0 12px;
+    border: 1px solid #E5E7EB;
+    border-radius: 8px;
+    background: white;
+    font-family: 'Mulish', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    color: #9CA3AF;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: all 0.1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transform-origin: center;
+    position: relative;
+}
+
+/* Эффект при наведении */
+.special-option-btn:hover {
+    border-color: #D1D5DB;
+    background-color: #F9FAFB;
+    color: #D1D5DB;
+}
+.special-option-btn.active {
+    background: #E0F6E4;
+    border-color: #74BA84;
+    color: #74BA84;
+    font-weight: 500;
+    animation: buttonBounce 0.1s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+
+
+
+
+
+.right-block {
+    flex: 1;
+    height: 491px; /* ← Добавьте эту строку! */
+}
+
+.right-block__container {
+    display: flex;
+    flex-direction: row; /* ← Явно укажите горизонтальное направление */
+    gap: 32px;
+    height: 100%;
+}
+
+.calculator-column {
+    width: 320px;
+    display: flex;
+    flex-direction: column;
+    height: 100%; /* Добавляем высоту */
+    justify-content: space-between; /* ← Прижимаем к противоположным краям */
+}
+
+.image-column {
+    flex: 1;
+    height: 100%;
+    min-width: 0; /* ← И это тоже */
+}
+
+.green-rectangle {
+    width: 100%;
+    height: 100%;
+    background-color: #E0F6E4;
+    border-radius: 8px;
+    padding: 24px 0px 0px 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end; /* ← Оставляем прижатие к правому краю */
+    justify-content: space-between;
+}
+
+.green-text {
+    font-family: 'Mulish', sans-serif;
+    font-size: 20px;
+    font-weight: 400;
+    color: #4AA460;
+    line-height: 1.4;
+    text-align: left; /* Текст слева */
+    width: 100%; /* ← Растягиваем на всю ширину контейнера */
+    align-self: stretch; /* ← Заставляет занимать всю доступную ширину */
+}
+
+.tree-image {
+    width: 505px;
+    height: 337px;
+    object-fit: cover;
+    border-radius: 8px;
+    align-self: flex-end; /* Картинка справа */
+}
+/* Остальные стили калькулятора */
+.calculator-title {
+    font-family: 'Mulish', sans-serif;
+    font-size: 24px;
+    font-weight: 600;
+    color: #111827;
+    margin: 0 0 16px 0;
+}
+
+.input-group {
+    margin-top: 16px;
+}
+
+.input-label {
+    font-family: 'Mulish', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    color: #9CA3AF;
+    display: block;
+    margin-bottom: 8px;
+}
+
+.seedlings-input {
+    width: 100%;
+    height: 40px;
+    padding: 0 12px;
+    border: 1px solid #E5E7EB;
+    border-radius: 8px;
+    background: white;
+    font-family: 'Mulish', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    color: #111827;
+}
+
+.seedlings-input::placeholder {
+    color: #D1D5DB;
+    font-family: 'Mulish', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.seedlings-input:focus {
+    outline: none;
+    border-color: #6B7280; /* Можно изменить цвет при фокусе */
+}
+
+
+.result-section {
+    margin-top: 24px;
+}
+
+
+
+.price-label {
+    font-family: 'Mulish', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    color: #9CA3AF;
+}
+
+.price-amount {
+    font-family: 'Mulish', sans-serif;
+    font-size: 32px;
+    font-weight: 800;
+    color: #4AA460;
+    margin-top: 4px;
+}
+
+.payment-button {
+    width: 100%;
+    height: 48px;
+    background-color: #4AA460;
+    border: none;
+    border-radius: 8px;
+    font-family: 'Mulish', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: #FFFFFF;
+    cursor: pointer;
+    margin-top: 16px; /* Расстояние 16px от текстов */
+    transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transform-origin: center;
+}
+
+/*#endregion */
+
+/*#region 2_блок - для компаний */
+
+.about-company {
+    padding: 320px 0 0 0;           /* Отступ 300px сверху */
+}
+
+.about-company__container {
+    width: 1400px;                  /* Ширина как в первом блоке */
+    margin: 0 auto;                 /* Центрирование */
+    display: flex;
+    flex-direction: column;         /* Вертикальное расположение */
+    gap: 40px;                      /* Расстояние между фреймами */
+}
+
+.frame {
+    width: 100%;                    /* На всю ширину контейнера */
+}
+
+.frame-1 {
+    height: auto;
+    display: flex;
+    justify-content: space-between;  /* Прижимает к противоположным краям */
+    align-items: center;        /* Выравнивание по верху */
+}
+
+.left-content {
+    width: 371px;
+    height: auto;
+}
+
+.main-title {
+    font-family: 'Mulish', sans-serif;
+    font-size: 48px;
+    font-weight: 800;               /* ExtraBold */
+    color: #1F2937;
+    margin: 0 0 16px 0;             /* Отступ снизу 16px */
+    line-height: 1.1;
+}
+
+.offer-frame {
+    display: flex;
+    align-items: center;            /* Выравнивание по вертикали по центру */
+    justify-content: flex-start;    /* Выравнивание по горизонтали слева */
+    gap: 8px;                       /* Расстояние между текстом и иконкой 8px */
+}
+
+.offer-text {
+    font-family: 'Mulish', sans-serif;
+    font-size: 18px;
+    font-weight: 600;               /* SemiBold */
+    color: #9CA3AF;
+}
+
+.offer-icon {
+    transform: scaleY(-1);          /* Отражает иконку по вертикали */
+    color: #9CA3AF;                 /* Цвет иконки как у текста */
+}
+
+.right-text {
+    width: 404px;                   /* Фиксированная ширина */
+    height: auto;                   /* Высота по контенту (Hug) */
+    font-family: 'Mulish', sans-serif;
+    font-size: 16px;
+    font-weight: 400;               /* regular */
+    color: #9CA3AF;
+    line-height: 1.4;
+    align-items: center;
+
+}
+
+.frame-2 {
+    height: auto;                   /* Высота по контенту (Hug) */
+    display: flex;
+    gap: 16px;                      /* Расстояние между колонками */
+}
+
+.frame-2__left {
+    width: 603px;  
+    display: flex;
+    flex-direction: column;
+    gap: 16px;                      /* Расстояние между фреймами в левой колонке */
+    flex: 1;                        /* Занимает доступное пространство */
+}
+
+/* Общий класс для всех фреймов с картинками */
+.image-frame {
+    padding: 24px;
+    border-radius: 32px;
+    box-shadow: 0 9px 54px 0 rgba(161, 167, 212, 0.2);
+    background: #F3F4F6 center/cover no-repeat;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* Индивидуальные стили для каждого фрейма ДОЛЖНЫ БЫТЬ ПОСЛЕ общего класса */
+.left-frame-1 {
+    justify-content: flex-end; /* Прижимает все элементы к низу */
+    width: 603px;
+    height: 400px;
+    background-image: url('./images/блок_для_компаний_2.jpg');
+}
+
+.left-frame-2 {
+    justify-content: flex-end; /* Прижимает все элементы к низу */
+    width: 603px;
+    height: 400px;
+    background-image: url('./images/блок_для_компаний_3.jpg');
+}
+
+.frame-2__right {
+    justify-content: flex-end; /* Прижимает все элементы к низу */
+    display: flex;
+    height: 816px;
+    background-image: url('./images/блок_для_компаний_1.jpg');
+}
+
+/* Верхний блок с цифрами */
+.top-content {
+    display: flex;
+    flex-direction: column;
+    gap: 0;                         /* Расстояние 0 между элементами */
+    width: fit-content;             /* Hug × Hug */
+    height: fit-content;            /* Hug × Hug */
+}
+
+.area {
+    font-family: 'Mulish', sans-serif;
+    font-size: 64px;
+    font-weight: 600;
+    color: #4AA460;
+    margin: 0;
+}
+
+.price {
+    font-family: 'Mulish', sans-serif;
+    font-size: 24px;
+    font-weight: 600;
+    color: #FFFFFF;
+    margin: 0;
+}
+
+
+.content-block {
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    height: auto;
+    padding: 16px;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.4); /* Белый с 50% прозрачностью */
+    backdrop-filter: blur(10px);          /* Размытие 25px */
+    -webkit-backdrop-filter: blur(10px);  /* Для Safari */
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    margin-top: 16px;
+    transition: transform 0.3s ease-in-out;
+}
+.content-block:hover {
+    transform: scale(1.02);
+}
+
+
+.description {
+    font-family: 'Mulish', sans-serif;
+    font-size: 20px;
+    font-weight: 400;
+    color: #FFFFFF;
+    line-height: 1.4;
+    margin: 0;
+}
+
+.payment-btn {
+    width: 100%;
+    height: 48px;
+    background: #4AA460;
+    border: none;
+    border-radius: 8px;            /* Закругление 20 */
+    font-family: 'Mulish', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: #FFFFFF;
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transform-origin: center;
+
+}
+
+
+/*#endregion */
+
+/*#region 3_БЛОК - VIDEO BLOCK */
+.video-block {
+    padding: 160px 0 0 0;           /* Отступ 240px сверху от прошлого блока */
+}
+
+.video-block__container {
+    width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;                      /* Расстояние 32px между заголовком и видео */
+}
+
+.video-title {
+    width: 100%;
+    text-align: center;
+    font-family: 'Mulish', sans-serif;
+    font-size: 48px;
+    font-weight: 800;               /* ExtraBold */
+    color: #1F2937;
+    margin: 0;
+}
+
+.video-wrapper {
+    width: 100%;
+}
+
+.video-player {
+    width: 1400px;
+    height: 770px;
+    border-radius: 32px;
+    border: none;                   /* Убирает рамку у iframe */
+}
+/*#endregion*/
+
+/*#region 4_БЛОК - PLANTING HISTORY */
+
+.planting-history {
+    margin-bottom: 136px;
+    margin-top: 120px;
+    width: 100%;
+    background: #E0F6E4;
+    border-radius: 80px;
+    padding: 120px 0 120px 0;
+}
+
+.planting-history__container {
+    width: 1400px;
+    height: auto;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 64px; /* Расстояние 64px между фреймами */
+}
+
+.history-frame-top {
+    height: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.history-left-content {
+    width: 426px;
+    height: auto;
+}
+
+.history-main-title {
+    font-family: 'Mulish', sans-serif;
+    font-size: 48px;
+    font-weight: 800;               /* ExtraBold */
+    color: #226737;
+    margin: 0 0 16px 0;
+    line-height: 1.1;
+}
+
+.history-offer-frame {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 8px;
+}
+
+.history-offer-text {
+    font-family: 'Mulish', sans-serif;
+    font-size: 18px;
+    font-weight: 600;               /* SemiBold */
+    color: #74BA84;
+}
+
+.history-offer-icon {
+    width: 14px;    /* Ширина как у старой иконки */
+    height: 14px;   /* Высота как у старой иконки */
+}
+
+.history-right-text {
+    width: 519px;
+    height: auto;
+    font-family: 'Mulish', sans-serif;
+    font-size: 16px;
+    font-weight: 400;               /* regular */
+    color: #4AA460;
+    line-height: 1.4;
+    display: flex;
+    align-items: center;
+}
+
+.history-frame-bottom {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column; /* 3 фрейма в столбик */
+    gap: 48px; /* Расстояние между фреймами */
+}
+
+.history-row-frame {
+    width: 100%;
+    height: auto;
+    display: flex; /* Элементы внутри в строку */
+    gap: 48px; /* Расстояние между элементами в строке */
+}
+
+.history-item {
+    height: auto;
+    border-radius: 32px;
+}
+
+.history-item-1 {
+    width: 456px; /* Фиксированная ширина */
+    height: 360px; /* Фиксированная высота */
+
+}
+
+.history-item-1 img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Заполняет блок без искажений */
+    display: block; /* Убирает лишние отступы */
+    border-radius: 32px;
+}
+
+.history-item-2 {
+    flex: 1;
+    min-height: 334px;
+    background: #ffffff;
+    display: flex;
+    gap: 64px; /* Расстояние между номером и текстом */
+    align-items: flex-start; /* Выравнивание по верху */
+    padding: 40px; /* Внутренние отступы */
+    align-items: center;     /* По вертикали по центру */
+    justify-content: flex-start; /* По горизонтали слева */
+}
+
+.history-number {
+    font-family: 'Mulish', sans-serif;
+    font-size: 200px;
+    font-weight: 600; /* SemiBold */
+    color: #4AA460;
+    line-height: 0.8; /* Чтобы цифра не занимала слишком много места */
+}
+
+.history-text-content {
+    display: flex;
+    flex-direction: column;
+    gap: 32px; /* Расстояние между заголовком и описанием */
+    flex: 1;
+}
+
+.history-company {
+    font-family: 'Mulish', sans-serif;
+    font-size: 32px;
+    font-weight: 600; /* SemiBold */
+    color: #111827;
+    margin: 0;
+}
+
+.history-description {
+    font-family: 'Mulish', sans-serif;
+    font-size: 18px;
+    font-weight: 400; /* Regular */
+    color: #6B7280;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/*#endregion*/
+
+/*#region 5_БЛОК - Почему важны деревья*/
+.next-section {
+    width: 100%;
+    margin-top: 136px; /* Отступ 136px от прошлого блока */
+}
+
+.next-section__container {
+    width: 1400px;
+    height: auto;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.next-frame {
+    width: 100%;
+    height: auto;
+}
+
+.next-frame-1 {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.next-frame-title {
+    font-family: 'Mulish', sans-serif;
+    font-size: 40px;
+    font-weight: 800; /* ExtraBold */
+    color: #1F2937;
+    margin: 0;
+}
+
+.chart-frame {
+    height: 80px;
+    background-color: #E0F6E4;
+    border-radius: 32px;
+    padding: 0px 32px 0px 32px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.chart-icon {
+    width: 48px;
+    height: 48px;
+}
+
+.chart-text {
+    font-family: 'Mulish', sans-serif;
+    font-size: 16px;
+    font-weight: 400; /* Regular */
+    color: #4AA460;
+}
+
+.next-frame-2 {
+    height: auto;
+    display: flex;
+    gap: 16px;
+    align-items: stretch; /* ← ЗАМЕНИТЕ center на stretch */
+}
+
+.graph {
+    padding: 32px;
+    border-radius: 32px;
+    background-color: #FFFFFF;
+    box-shadow: 0 9px 54px 0 rgba(161, 167, 212, 0.2);
+    display: flex;
+    align-items: center; /* Центрируем картинку внутри графика */
+}
+
+.graph-img {
+    width: 483px;
+    height: 476px;
+    object-fit: contain;
+    transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    will-change: transform;
+    transform-origin: center;
+}
+
+.graph-img.tilting {
+    transform: 
+        rotate(var(--tilt-rotate)) 
+        translateY(var(--tilt-lift))
+        scale(var(--tilt-scale));
+}
+
+.stats {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    /* height: 100%; - можно убрать, т.к. stretch уже растягивает */
+}
+
+.block-text-stats {
+    width: 100%;
+    background-color: #FFFFFF;
+    border-radius: 32px;
+    padding: 32px;
+    box-shadow: 0 9px 54px 0 rgba(161, 167, 212, 0.2);
+    flex: 1;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* ← Прижимает к противоположным краям */
+    overflow: auto; /* Добавьте прокрутку если текст не помещается */
+}
+
+.text-top {
+    width: 100%;
+    font-family: 'Mulish', sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    color: #6B7280;
+    line-height: 1.6;
+    margin: 0 0 24px 0;
+    height: auto; /* Высота по контенту */
+}
+
+.stats-down {
+    width: 100%;
+    height: auto;
+    display: flex; /* Элементы в строку */
+    gap: 16px; /* Расстояние между блоками */
+    align-items: center; /* Выравнивание по центру по вертикали */
+}
+
+.stats-numer {
+    display: flex;
+    flex-direction: column; /* SVG и текст в столбик */
+    align-items: center; /* Центрирование по горизонтали */
+    gap: 8px; /* Расстояние между SVG и текстом */
+    flex: 1; /* Каждый блок занимает равное пространство */
+}
+
+.number-stats {
+    width: 107px;
+    height: 90px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.number-stats img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.stats-text {
+    font-family: 'Mulish', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    color: #111827;
+    text-align: center;
+    line-height: 1.4;
+}
+
+.border-stars-number {
+    width: 1px;
+    height: 100px;
+    background: #E5E7EB; /* Цвет разделителя */
+    border-radius: 999px;
+}
+.text-down {
+    font-family: 'Mulish', sans-serif;
+    font-size: 20px;
+    font-weight: 400;
+    color: #9CA3AF;
+    line-height: 1.5;
+    margin: 0;
+    width: 100%;
+    height: auto;
+}
+
+
+
+/*#endregion*/
+
+/*#region 6_БЛОК - Эмоциональный блок */
+
+.emotional-block {
+    position: relative; /* Для абсолютного позиционирования дочерних элементов */
+    margin-bottom: 136px;
+    margin-top: 120px;
+    width: 100%;
+    background: #E0F6E4;
+    border-radius: 80px;
+    padding: 90px 0;
+    overflow: hidden; /* Чтобы картинки не выходили за границы блока */
+}
+
+.emotional-block__container {
+    width: 1400px;
+    height: auto;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 64px;
+    position: relative; /* Чтобы картинки были относительно контейнера */
+    z-index: 2; /* Чтобы контент был поверх картинок */
+}
+.new-frame-top {
+    height: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.background-image {
+    position: absolute;
+    z-index: 1; /* Под основным контентом */
+    border-radius: 20px; /* Совпадает с карточками */
+    object-fit: cover;
+}
+
+.background-image {
+    position: absolute;
+    z-index: 1;
+    border-radius: 20px;
+    object-fit: cover;
+}
+
+.bg-image-1, .bg-image-2, .bg-image-3 {
+    position: absolute;
+    z-index: 1;
+    border-radius: 20px;
+    object-fit: cover;
+    will-change: transform;
+    transition: transform 0.1s ease-out;
+}
+
+.bg-image-1 {
+    width: 620px;
+    height: 820px;
+    top: 400px;
+    left: 3%;
+    --speed: 0.3; /* Медленнее - дальний план */
+}
+
+.bg-image-2 {
+    width: 640px;
+    height: 800px;
+    top: 440px;
+    left: 35%;
+    transform: scaleX(-1);
+    --speed: 0.5; /* Средняя скорость */
+}
+
+.bg-image-3 {
+    width: 600px;
+    height: 840px;
+    top: 400px;
+    right: 2%;
+    --speed: 0.7; /* Быстрее - ближний план */
+}
+
+.new-left-content {
+    width: 539px;
+    height: auto;
+}
+
+.new-main-title {
+    font-family: 'Mulish', sans-serif;
+    font-size: 48px;
+    font-weight: 800;
+    color: #226737;
+    margin: 0 0 16px 0;
+    line-height: 1.1;
+}
+
+.new-offer-frame {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 8px;
+}
+
+.new-offer-text {
+    font-family: 'Mulish', sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: #74BA84;
+}
+
+.new-offer-icon {
+    width: 24px;
+    height: 24px;
+}
+
+.new-right-text {
+    width: 519px;
+    height: auto;
+    font-family: 'Mulish', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    color: #4AA460;
+    line-height: 1.4;
+    display: flex;
+    align-items: center;
+}
+
+.new-frame-bottom {
+    width: 100%;
+    height: auto;
+    display: flex;
+    gap: 16px;
+}
+
+.bottom-frame {
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    /* Обводка */
+    flex: 1;
+    height: 720px;
+    background: rgba(255, 255, 255, 0.7);
+    /* Белый с 50% прозрачностью */
+    backdrop-filter: blur(10px);
+    /* Размытие 25px */
+    -webkit-backdrop-filter: blur(10px);
+    /* Для Safari */
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    /* Распределение по высоте */
+    padding: 24px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.bottom-frame:hover {
+    transform: scale(1.02);
+}
+.top-pos {
+    flex: 1; /* Занимает доступное пространство */
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.new-emot-img {
+    width: 100%;
+    height: 291px; /* Fill × 291px */
+    object-fit: cover;
+    border-radius: 16px;
+}
+
+.text-emot {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    height: auto; /* Hug */
+}
+
+.text-emot-zagolovok {
+    font-family: 'Mulish', sans-serif;
+    font-size: 20px;
+    font-weight: 600; /* SemiBold */
+    color: #1F2937;
+    margin: 0;
+}
+
+.text-emot-opisanie {
+    font-family: 'Mulish', sans-serif;
+    font-size: 16px;
+    font-weight: 400; /* Regular */
+    color: #4B5563;
+    line-height: 1.2;
+    margin: 0;
+}
+
+.down-pos {
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Расстояние между текстом и кнопкой 20px */
+}
+
+.text-dop-emot {
+    font-family: 'Mulish', sans-serif;
+    font-size: 16px;
+    font-weight: 400; /* Regular */
+    color: #6B7280;
+    margin: 0;
+}
+
+.emotion-btn {
+    width: 100%; /* Fill */
+    height: 48px; /* Высота 48px */
+    background: #4AA460;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 8px;
+    font-family: 'Mulish', sans-serif;
+    font-size: 16px;
+    font-weight: 400; /* Regular */
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transform-origin: center;
+}
+
+/*#endregion*/
+
+/*#region 7_БЛОК - HOW IT WORKS */
+
+.how-it-works {
+    margin-bottom: 136px; /* Отступ снизу как у других блоков */
+}
+
+.how-it-works__container {
+    width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 64px; /* Большое расстояние между верхним и нижним фреймом */
+}
+
+.how-frame {
+    width: 100%;
+    height: auto;
+}
+
+.how-frame-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; /* Выравнивание по верху */
+}
+
+.how-left-content {
+    width: 519px; /* Аналогично блоку "История посадок" */
+    height: auto;
+}
+
+.how-main-title {
+    font-family: 'Mulish', sans-serif;
+    font-size: 48px;
+    font-weight: 800; /* ExtraBold */
+    color: #1F2937;
+    margin: 0 0 16px 0;
+    line-height: 1.1;
+}
+
+.how-offer-frame {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 8px;
+}
+
+.how-offer-text {
+    font-family: 'Mulish', sans-serif;
+    font-size: 18px;
+    font-weight: 600; /* SemiBold */
+    color: #9CA3AF;
+}
+
+.how-right-text {
+    width: 519px; /* Аналогично предыдущим блокам */
+    height: auto;
+    font-family: 'Mulish', sans-serif;
+    font-size: 16px;
+    font-weight: 400; /* regular */
+    color: #9CA3AF;
+    line-height: 1.4;
+    display: flex;
+    align-items: center;
+}
+
+.how-frame-bottom {
+    display: flex;
+    gap: 16px; /* Расстояние между фреймами 16px */
+    height: 820px; /* Высота 820px */
+}
+
+/* Стили для шагов процесса */
+.how-bottom-frame {
+    flex: 1;
+    height: 100%;
+    background: #FFFFFF;
+    border-radius: 32px;
+    box-shadow: 0 9px 54px 0 rgba(161, 167, 212, 0.2);
+    padding: 64px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;    /* ← Вертикальное центрирование */
+    align-items: flex-start;    /* ← Выравнивание слева */
+    gap: 16px; /* Расстояние между блоками 48px */
+}
+
+.step-cont {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    height: auto;
+    transition: transform 0.1s ease-out;
+    will-change: transform;
+    transform-origin: left center; /* Трансформация от левого края */
+    padding: 16px;
+    border-radius: 16px;
+}
+
+.step-img {
+    width: 588px;
+    height: 736px;
+    object-fit: cover; /* ← Это аналог Fill в Figma */
+}
+
+
+.step1,
+.step5 {
+    color: #4AA460; /* 01 и 05 - зеленый */
+    font-family: 'Mulish', sans-serif;
+    font-size: 80px; 
+    font-weight: 800; /* ExtraBold */
+}
+
+.step2,
+.step3,
+.step4  {
+    color: #D1D5DB; /* 02, 03, 04 - серый */
+    font-family: 'Mulish', sans-serif;
+    font-size: 80px; 
+    font-weight: 800; /* ExtraBold */
+}
+
+.text-step {
+    display: flex;
+    flex-direction: column;
+    gap: 8px; /* Между заголовком и описанием 8px */
+    flex: 1; /* Fill по ширине */
+}
+
+.top-text-step {
+    font-family: 'Mulish', sans-serif;
+    font-size: 40px; /* 50px */
+    font-weight: 800; /* ExtraBold */
+    color: #1F2937;
+}
+
+.down-text-step {
+    font-family: 'Mulish', sans-serif;
+    font-size: 20px; /* 20px */
+    font-weight: 400; /* Regular */
+    color: #6B7280;
+    line-height: 1.4;
+}
+
+
+/*#endregion*/
+
+/*#region 8_БЛОК - PARTNERS */
+
+.partners {
+    margin-top: 296px; /* Расстояние от прошлого блока 296px */
+    margin-bottom: 240px; /* Стандартный отступ снизу */
+}
+
+.partners__container {
+    width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 64px; /* Расстояние между заголовком и фреймом 64px */
+}
+
+.partners-title {
+    font-family: 'Mulish', sans-serif;
+    font-size: 48px;
+    font-weight: 800; /* ExtraBold */
+    color: #1F2937;
+    text-align: center;
+    margin: 0;
+}
+
+.partners-frame {
+    width: 100%;
+    height: auto;
+    border-radius: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px; /* Расстояние между строками */
+}
+
+.partners-row {
+    display: flex;
+    gap: 16px; /* Расстояние между фреймами в строке */
+    height: 240px; /* Высота строки */
+}
+
+.partner-item {
+    flex: 1;
+    height: 100%;
+    background: #FFFFFF;
+    border-radius: 32px;
+    box-shadow: 0 9px 54px 0 rgba(161, 167, 212, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    position: relative;
+}
+
+.partner-item:hover {
+    transform: translate(var(--mouse-x), var(--mouse-y)) rotate(var(--mouse-rotate));
+}
+
+/*#endregion*/
+
+/*#region 9_БЛОК - DOCUMENTS */
+
+.documents {
+    margin-bottom: 240px; /* Стандартный отступ снизу */
+}
+
+.documents__container {
+    width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 64px; /* Расстояние между фреймами как в блоке компаний */
+}
+
+.doc-frame {
+    width: 100%;
+    height: auto;
+}
+
+.doc-frame-1 {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    align-items: center;
+}
+
+.doc-left-content {
+    width: 371px;
+    height: auto;
+}
+
+.doc-main-title {
+    font-family: 'Mulish', sans-serif;
+    font-size: 48px;
+    font-weight: 800; /* ExtraBold */
+    color: #1F2937;
+    margin: 0 0 16px 0;
+    line-height: 1.1;
+}
+
+.doc-offer-frame {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 8px;
+}
+
+.doc-offer-text {
+    font-family: 'Mulish', sans-serif;
+    font-size: 18px;
+    font-weight: 600; /* SemiBold */
+    color: #9CA3AF;
+}
+
+.doc-offer-icon {
+    transform: scaleY(-1); /* Отражает иконку как в блоке компаний */
+    color: #9CA3AF;
+}
+
+.doc-right-text {
+    width: 404px;
+    height: auto;
+    font-family: 'Mulish', sans-serif;
+    font-size: 16px;
+    font-weight: 400; /* regular */
+    color: #9CA3AF;
+    line-height: 1.4;
+    align-items: center;
+}
+
+.doc-frame-2 {
+    height: auto;
+}
+
+.doc-main-item {
+    display: flex;
+    gap: 16px; /* Расстояние между документами */
+    height: auto; /* Hug по высоте */
+}
+
+.doc-item {
+    flex: 1; /* Fill по ширине - все документы равной ширины */
+    height: auto; /* Hug по высоте */
+    display: flex;
+    flex-direction: column;
+    gap: 16px; /* Расстояние между картинкой и текстом */
+    transition: transform 0.3s ease; /* Добавляем плавность */
+    cursor: pointer;
+}
+.doc-item:hover {
+    transform: scale(1.02); 
+}
+
+.doc-image {
+    box-shadow: 0 9px 54px 0 rgba(161, 167, 212, 0.2);
+    width: 100%;
+    height: 517px; /* Фиксированная высота для картинки */
+    object-fit: cover; /* Fill как в Figma */
+    border-radius: 24px;
+}
+
+.doc-item-description {
+    font-family: 'Mulish', sans-serif;
+    font-size: 20px;
+    font-weight: 400; /* Regular */
+    color: #6B7280;
+    line-height: 1.4;
+    margin: 0;
+    text-align: center;
+}
+
+/*#endregion*/
+
+/*#region 10_БЛОК - CONTACTS FORM */
+
+.contacts-form {
+    position: relative;
+    width: 100%;
+    margin-bottom: -120px;
+    z-index: 1; /* Понижаем z-index для всего блока формы */
+}
+
+.contacts-main {
+    position: relative;
+    z-index: 1; /* Основной блок формы */
+    width: 100%;
+    background: #E0F6E4;
+    border-radius: 80px 80px 0 0;
+    padding: 120px 0 180px 0;
+}
+.contacts-bg-image {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 1846.66px; /* Точная ширина */
+    height: 866.96px; /* Точная высота */
+    z-index: 2;
+    opacity: 1; /* Убираем прозрачность */
+    object-fit: cover;
+}
+
+.contacts-main__container {
+    position: relative;
+    z-index: 3; /* Контент формы поверх картинки */
+    width: 1400px;
+    margin: 0 auto;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 60px;
+}
+
+.contacts-title {
+    font-family: 'Mulish', sans-serif;
+    font-size: 48px;
+    font-weight: 800;
+    color: #226737;
+    text-align: center;
+    margin: 0;
+}
+
+.contacts-form-frame {
+    width: 472px;
+    height: 521px;
+    background: #FFFFFF;
+    border-radius: 32px;
+    box-shadow: 0 9px 54px 0 rgba(161, 167, 212, 0.2);
+    padding: 40px;
+}
+
+.contacts-footer {
+    width: 100%;
+    background: #4AA460;
+    height: auto;
+    padding: 64px 0;
+    border-radius: 80px 80px 0 0;
+}
+
+.contacts-form-frame {
+    width: 472px;
+    height: 521px;
+    background: #FFFFFF;
+    border-radius: 32px;
+    box-shadow: 0 9px 54px 0 rgba(161, 167, 212, 0.2);
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Разделяем поля ввода и чекбокс */
+}
+
+/* Стили для формы */
+.contacts-form-frame {
+    width: 472px;
+    height: 521px;
+    background: #FFFFFF;
+    border-radius: 32px;
+    box-shadow: 0 9px 54px 0 rgba(161, 167, 212, 0.2);
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.form-title {
+    font-family: 'Mulish', sans-serif;
+    font-size: 24px;
+    font-weight: 600; /* SemiBold */
+    color: #111827;
+    text-align: center;
+    margin: 0 0 24px 0; /* Отступ снизу 24px */
+}
+
+.form-inputs-frame {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.input-group {
+    margin: 0;
+    display: flex; /* ← ДОБАВЬ display: flex */
+    flex-direction: column;
+    gap: 8px; /* Расстояние между лейблом и инпутом */
+}
+
+.input-label {
+    margin: 0;
+    font-family: 'Mulish', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    color: #9CA3AF;
+}
+
+.text-input {
+    width: 100%; /* Fill */
+    height: 40px; /* Высота 40px */
+    padding: 0 12px; /* Внутренние отступы слева/справа 12px */
+    border: 1px solid #E5E7EB; /* Рамка */
+    border-radius: 8px; /* Скругление */
+    background: white;
+    
+    /* Текст */
+    font-family: 'Mulish', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    color: #111827;
+    
+    /* Выравнивание текста */
+    text-align: left;
+    
+    /* ← ДОБАВЛЯЕМ СТИЛЬ ФОКУСА */
+    outline: none; /* Убираем стандартное выделение */
+}
+
+/* Стиль при фокусе */
+.text-input:focus {
+    border: 1px solid #6B7280; /* 1px бордер цвет 6B7280 */
+}
+
+/* Плейсхолдер (текст-подсказка) */
+.text-input::placeholder {
+    color: #D1D5DB;
+    font-family: 'Mulish', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+
+
+.form-checkbox-frame {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.checkbox-group {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.checkbox {
+    width: 16px;
+    height: 16px;
+    border-radius: 4px;
+    border: 1px solid #E5E7EB;
+    background-color: white;
+    cursor: pointer;
+    appearance: none; /* ← Убираем стандартный стиль */
+    -webkit-appearance: none; /* Для Safari */
+    position: relative;
+}
+
+.checkbox:checked {
+    background-color: #4AA460;
+    border-color: #4AA460;
+}
+
+.checkbox-label {
+    font-family: 'Mulish', sans-serif;
+    font-size: 14px;        /* Размер текста */
+    font-weight: 400;       /* Жирность: Regular */
+    color: #9CA3AF;         /* Цвет текста */
+    line-height: 1.4;       /* Межстрочный интервал */
+    margin: 0;              /* Убираем отступы */
+    cursor: pointer;        /* Курсор-указатель при наведении */
+}
+
+.checkbox:checked::after {
+    content: '✓';
+    color: white;
+    font-size: 12px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+
+.form-bottom-frame {
+    display: flex;
+    flex-direction: column;
+    gap: 8px; /* Расстояние между текстом и кнопкой 8px */
+    align-items: center;
+}
+
+.privacy-link {
+    font-family: 'Mulish', sans-serif;
+    font-size: 14px;
+    font-weight: 400; /* Regular */
+    color: #D1D5DB;
+    text-decoration: none;
+}
+
+.privacy-link:hover {
+    text-decoration: underline;
+}
+
+.submit-button {
+    width: 100%; /* Fill по ширине */
+    height: 48px;
+    background: #4AA460;
+    border: none;
+    border-radius: 8px;
+    font-family: 'Mulish', sans-serif;
+    font-size: 16px;
+    font-weight: 600; /* SemiBold */
+    color: #FFFFFF;
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transform-origin: center;
+}
+
+
+
+
+
+
+
+
+
+
+/*#endregion*/
+
+/*#region ФУТЕР С COPYRIGHT */
+
+/* Футер должен быть выше всего */
+.footer-section {
+    width: 100%;
+    position: relative;
+    z-index: 4; /* Футер поверх всего */
+    margin-top: -120px;
+}
+
+.contacts-footer {
+    width: 100%;
+    background: #4AA460;
+    height: auto;
+    padding: 32px 0 32px 0;
+    border-radius: 80px 80px 0 0;
+    position: relative;
+    z-index: 4; /* Дублируем для надежности */
+}
+
+.contacts-footer__container {
+    width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+}
+
+.contact-frame {
+    display: flex;
+    gap: 80px;
+}
+
+.footer-contacts-frame {
+    display: flex;
+    flex-direction: column;
+}
+
+.contact-item {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.contact-label {
+    font-family: 'Mulish', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    color: #ffffff;
+}
+
+.contact-phone {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transform-origin: left center;
+    cursor: pointer;
+}
+.contact-phone:hover {
+    transform: scale(1.05);
+}
+
+.contact-phone:active {
+    transform: scale(0.98);
+    transition: all 0.1s ease;
+}
+
+.contact-icon {
+    width: 24px;
+    height: 24px;
+}
+
+.sviaz {
+    font-family: 'Mulish', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: #FFFFFF;
+}
+
+.privacy-text {
+    font-family: 'Mulish', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    color: #E5E7EB;
+    text-decoration: none;
+    align-self: center;
+}
+
+.privacy-text:hover {
+    text-decoration: underline;
+}
+
+.footer-right-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 8px;
+}
+
+.socials-frame {
+    width: 426px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    align-items: flex-end;
+}
+
+.socials-text {
+    text-align: center;
+    width: 88px;
+    font-family: 'Mulish', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    color: #E5E7EB;
+}
+
+.socials-buttons {
+    display: flex;
+    gap: 8px;
+}
+
+.social-btn {
+    width: 40px;
+    height: 40px;
+    border-color: #FFFFFF;
+    border: none; 
+    border-radius: 999px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transform-origin: center;
+}
+
+.social-btn:hover {
+    transform: scale(1.5);
+}
+
+.social-btn:active {
+    transform: scale(0.9);
+    transition: all 0.1s ease;
+}
+
+.social-icon {
+    width: 20px;
+    height: 20px;
+}
+
+.copyright {
+    width: 100%;
+    height: 48px;
+    background: #226737;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 0; /* Убираем отступ между футером и copyright */
+}
+
+.copyright__container {
+    width: 1400px;
+    margin: 0 auto;
+    text-align: center;
+    font-family: 'Mulish', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    color: #ffffff;
+}
+
+/*#endregion*/

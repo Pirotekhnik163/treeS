@@ -1,0 +1,794 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=width=device-width, initial-scale=1.0">
+    <title>Рост</title>
+
+    <!-- Подключение шрифтов Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@400;600;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+    <style>
+</style>
+</head>
+<body>
+    <!-- Шапка -->
+    <header class="header">
+        <div class="header__container">
+            <!-- Логотип слева -->
+            <a href="#home" class="logo-link">
+                <img src="./images/logo_rost.png" alt="Логотип" class="logo-img">
+            </a>
+            
+            <!-- Навигация справа -->
+            <nav class="header__nav">
+                <a href="#companies" class="nav-link">Для компаний</a>
+                <a href="#history" class="nav-link">История посадок</a>
+                <a href="#emotional" class="nav-link">Эмоциональный блок</a>
+                <a href="#stages" class="nav-link">Этапы</a>
+                <a href="#trust" class="nav-link">Блок доверия</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Вторая шапка (фиксированная) -->
+    <header class="header header--fixed">
+        <div class="header__container">
+            <a href="#home" class="logo-link">
+                <img src="./images/logo_rost.png" alt="Логотип" class="logo-img">
+            </a>
+            <nav class="header__nav">
+                <a href="#companies" class="nav-link">Для компаний</a>
+                <a href="#history" class="nav-link">История посадок</a>
+                <a href="#emotional" class="nav-link">Эмоциональный блок</a>
+                <a href="#stages" class="nav-link">Этапы</a>
+                <a href="#trust" class="nav-link">Блок доверия</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Блок 1: Главный экран -->
+    <section class="hero" id="home">
+        <div class="hero__container">
+            <h1 class="hero__title">Подари жизнь дереву — вырасти память<br>Память, которая останется на века</h1>
+            <p class="hero__subtitle">Каждое посаженное дерево — это не просто растение. Это живой памятник, который вы оставляете<br>после себя. Это тень для будущих поколений, дом для птиц и чистый воздух для планеты. </p>
+        </div>
+
+        <div class="hero__bottom-block">
+            <div class="bottom-block__container">
+                <div class="white-block left-block">
+                    <h3 class="participation-title">Выбор участия</h3>
+                
+                    <div class="options-container">
+                        <div class="option-item">
+                            <span class="option-label">Город</span>
+                            <div class="select-wrapper">
+                                <button class="select-button">
+                                    <span class="button-text">Выбор города</span>
+                                    <svg class="button-icon" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                        <path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="1.5"/>
+                                    </svg>
+                                </button>
+                                <div class="dropdown-menu">
+                                    <div class="dropdown-item" data-value="moscow">Москва</div>
+                                    <div class="dropdown-item" data-value="petersburg">Санкт-Петербург</div>
+                                    <div class="dropdown-item" data-value="kazan">Казань</div>
+                                    <div class="dropdown-item" data-value="novosibirsk">Новосибирск</div>
+                                    <div class="dropdown-item" data-value="ekaterinburg">Екатеринбург</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="option-item">
+                            <span class="option-label">Количество участников</span>
+                            <div class="input-container">
+                                <input type="text" class="participants-input" placeholder="Введите кол-во участников">
+                            </div>
+                        </div>
+                        <div class="option-item">
+                            <span class="option-label">Спец опции</span>
+                            <div class="special-options">
+                                <button class="special-option-btn">Посвящение в мужчины</button>
+                                <button class="special-option-btn">Свадебное дерево</button>
+                                <button class="special-option-btn">Роща славы</button>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- закрываем .left-block -->
+            
+                <div class="white-block right-block">
+                    <div class="right-block__container"> <!-- ← Добавьте этот div -->
+                        <!-- Левая колонка - калькулятор -->
+                        <div class="calculator-column">
+                            <div class="calculator-section">
+                                <h3 class="calculator-title">Калькулятор</h3>
+                                <div class="input-group">
+                                    <span class="input-label">Количество саженцев</span>
+                                    <div class="input-container">
+                                        <input type="text" class="seedlings-input" placeholder="Введите кол-во саженцев">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="result-section">
+                                <!-- Первый div - два текста -->
+                                <div class="price-info">
+                                    <div class="price-label">Цена за указанное количество саженцев</div>
+                                    <div class="price-amount">100 000 ₽</div>
+                                </div>
+                                <!-- Кнопка оплаты -->
+                                <button class="payment-button">Перейти к оплате</button>
+                            </div>
+                        </div>
+                        
+                        <!-- Правая колонка - зелёный прямоугольник -->
+                        <div class="image-column">
+                            <div class="green-rectangle">
+                                <!-- Текст -->
+                                <div class="green-text">
+                                    Ваше дерево — живое наследие<br>Тень для внуков и дом для леса
+                                </div>
+                                
+                                <!-- Картинка -->
+                                <img src="images/home_ruka.png" alt="Дерево" class="tree-image">
+                            </div>
+                        </div>
+                    </div> <!-- ← Закрываем right-block__container -->
+                </div>
+            </div> <!-- закрываем .bottom-block__container -->
+        </div> <!-- закрываем .hero__bottom-block -->
+    </section> <!-- закрываем .hero -->
+
+    <!-- Блок 2: для компаний -->
+    <section class="about-company" id="companies">
+        <div class="about-company__container">
+            <!-- Первый фрейм -->
+            <div class="frame frame-1">
+                <!-- Левый блок -->
+                <div class="left-content">
+                    <!-- Основной заголовок -->
+                    <h2 class="main-title">Блок<br>для компаний</h2>
+                    
+                    <!-- Фрейм с текстом и иконкой -->
+                    <div class="offer-frame">
+                        <span class="offer-text">Наши предложения</span>
+                        <svg class="offer-icon" width="14" height="14" viewBox="0 0 14 14" fill="none">
+                            <path d="M5 12H12M12 12L12 5M12 12L5 5" stroke="currentColor" stroke-width="1.5"/>
+                        </svg>
+                    </div>
+                </div>
+                
+                <!-- Правый текст -->
+                <div class="right-text">
+                    Выберите необходимое количество гектаров саженцев для посадки — от нескольких до сотен гектаров под ваш проект.
+                </div>
+            </div>
+            
+            <!-- Второй фрейм -->
+            <div class="frame frame-2">
+                <!-- Левая колонка -->
+                <div class="frame-2__left">
+                    <div class="left-frame-1 image-frame">
+                        <!-- Верхний блок с цифрами -->
+                        <div class="top-content">
+                            <div class="area">1 га</div>
+                            <div class="price">100 000 ₽</div>
+                        </div>
+                        
+                        <!-- Блок с описанием и кнопкой -->
+                        <div class="content-block">
+                            <div class="description">
+                                Легкий старт — оптимальный объем для теста или небольших проектов.
+                            </div>
+                            <button class="payment-btn">Перейти к оплате</button>
+                        </div>
+                    </div>
+                    
+                    <div class="left-frame-2 image-frame">
+                        <!-- Верхний блок с цифрами -->
+                        <div class="top-content">
+                            <div class="area">10 га</div>
+                            <div class="price">1 000 000 ₽</div>
+                        </div>
+                        
+                        <!-- Блок с описанием и кнопкой -->
+                        <div class="content-block">
+                            <div class="description">
+                                Такой объём оптимален для развития сельского хозяйства или бизнеса.
+                            </div>
+                            <button class="payment-btn">Перейти к оплате</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Правая колонка -->
+                <div class="frame-2__right image-frame">
+                    <!-- Верхний блок с цифрами -->
+                    <div class="top-content">
+                        <div class="area">100 га</div>
+                        <div class="price">10 000 000 ₽</div>
+                    </div>
+                    
+                    <!-- Блок с описанием и кнопкой -->
+                    <div class="content-block">
+                        <div class="description">
+                            Максимальная выгода — низкая цена за саженец, приоритетное обслуживание и поддержка, идеальный объем для масштабных инвестиций и гарантированного роста.
+                        </div>
+                        <button class="payment-btn">Перейти к оплате</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Блок 3: Видео блок -->
+    <section class="video-block">
+        <div class="video-block__container">
+            <h2 class="video-title">Видео-блок</h2>
+            <div class="video-wrapper">
+                <iframe 
+                    class="video-player" 
+                    src="https://vkvideo.ru/video_ext.php?oid=539995411&id=456239018&hash=a7039515ddbe0375" 
+                    frameborder="0" 
+                    allowfullscreen="1" 
+                    allow="autoplay; encrypted-media; fullscreen; picture-in-picture">
+                </iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Блок 4: История посадок -->
+    <section class="planting-history" id="history">
+        <div class="planting-history__container">
+            <!-- Верхний фрейм -->
+            <div class="history-frame history-frame-top">
+                <!-- Левый блок -->
+                <div class="history-left-content">
+                    <h2 class="history-main-title">История посадок</h2>
+                    <div class="history-offer-frame">
+                        <img src="./images/icon_human_history.png" alt="Иконка пользователей" class="history-offer-icon">
+                        <span class="history-offer-text">С нами уже 2.5 миллионов человек!</span>
+                    </div>
+                </div>
+                
+                <!-- Правый текст -->
+                <div class="history-right-text">
+                    В этом блоке мы собрали самые интересные истории посадок, которые вдохновляют своими результатами, показывают необычные подходы и опыт успешных садоводов и фермеров.
+                </div>
+            </div>
+            
+            <!-- Нижний фрейм -->
+            <div class="history-frame history-frame-bottom">
+                <!-- Первый фрейм (в строку) -->
+                <div class="history-row-frame">
+                    <div class="history-item history-item-1">
+                        <img src="./images/historu_1.jpg" alt="История посадок">
+                    </div>
+                    <div class="history-item history-item-2">
+                        <!-- Левый номер -->
+                        <div class="history-number">01</div>
+                        
+                        <!-- Правый текстовый блок -->
+                        <div class="history-text-content">
+                            <h3 class="history-company">Семья Петровых</h3>
+                            <p class="history-description">
+                                Мы купили саженцы для нашего маленького леса, который растет около дома и остались очень довольны. Деревца прижились быстро, за ними почти не  ухаживали. Это приятно видеть, как из маленьких ростков вырастают сильные деревья, которые будут радовать нас и будущие поколения. Рекомендуем всем, кто хочет сделать свой дом живее и экологичнее!
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Второй фрейм (в строку) -->
+                <div class="history-row-frame">
+                    <div class="history-item history-item-2">
+                        <!-- Левый номер -->
+                        <div class="history-number">02</div>
+                        
+                        <!-- Правый текстовый блок -->
+                        <div class="history-text-content">
+                            <h3 class="history-company">Василий Дуб</h3>
+                            <p class="history-description">
+                                С радостью посадил саженцы, потому что верю, что каждый может помочь природе. Эти деревья восстанавливают экологический баланс, очищают воздух и создают среду для птиц и насекомых. Призываю всех заботиться о нашей планете — это наш общий дом, и бережное отношение к нему — обязанность каждого.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="history-item history-item-1">
+                        <img src="./images/historu_2.jpg" alt="История посадок">
+                    </div>
+                </div>
+                
+                <!-- Третий фрейм (в строку) -->
+                <div class="history-row-frame">
+                    <div class="history-item history-item-1">
+                        <img src="./images/historu_3.jpg" alt="История посадок">
+                    </div>
+                    <div class="history-item history-item-2">
+                        <!-- Левый номер -->
+                        <div class="history-number">03</div>
+                        
+                        <!-- Правый текстовый блок -->
+                        <div class="history-text-content">
+                            <h3 class="history-company">Компания Пипинов</h3>
+                            <p class="history-description">
+                                Наша компания ценит сохранение природы и поддерживает экологические инициативы. Посадка саженцев помогает восстанавливать леса, улучшать воздух и бороться с изменением климата, поглощая СО₂. Мы вдохновляем рынок на устойчивые практики и инвестируем в зелёные проекты для устойчивого будущего.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Блок 5: Почему важны деревья -->
+    <section class="why-trees-important">
+        <div class="next-section__container">
+            <!-- Первый фрейм -->
+            <div class="next-frame next-frame-1">
+                <!-- Левый текст -->
+                <div class="next-frame-left">
+                    <h2 class="next-frame-title">Почему важно сажать деревья?</h2>
+                </div>
+                
+                <!-- Правый блок с текстом и картинкой -->
+                <div class="next-frame-right">
+                    <div class="chart-frame">
+                        <span class="chart-text">График спада лесов</span>
+                        <img src="./images/men_grah.png" alt="График" class="chart-icon">
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Второй фрейм -->
+            <div class="next-frame next-frame-2">
+                <div class="graph">
+                    <img src="./images/graph.png" alt="График" class="graph-img">
+                </div>
+                <div class="stats">
+                    <div class="block-text-stats"> <!-- Исправлено clas → class -->
+                        <div class="text-top">
+                            Сажать деревья важно, потому что они очищают воздух, поглощая CO₂ и выделяя кислород, уменьшают шум и пыль, создают тень и сохраняют влагу в почве, предотвращая эрозию. Деревья поддерживают биоразнообразие и улучшают психическое здоровье, снижая стресс. Это важный вклад в экологию и устойчивое развитие.
+                        </div>
+                        <div class="stats-down">
+                            <div class="stats-numer">
+                                <div class="number-stats">
+                                    <img src="./images/svg_stats1.svg" alt="График">
+                                </div>
+                                <div class="stats-text">
+                                    10 миллионов гектаров леса вырубается каждый год
+                                </div>
+                            </div>
+                            
+                            <div class="border-stars-number"></div>
+                            
+                            <div class="stats-numer">
+                                <div class="number-stats">
+                                    <img src="./images/svg_stats1.svg" alt="График">
+                                </div>
+                                <div class="stats-text">
+                                    10 миллионов гектаров леса сгорает каждый год
+                                </div>
+                            </div>
+                            
+                            <div class="border-stars-number"></div>
+                            
+                            <div class="stats-numer">
+                                <div class="number-stats">
+                                    <img src="./images/svg_stats2.svg" alt="График">
+                                </div>
+                                <div class="stats-text">
+                                    7,7 миллионов гектаров леса засаживается каждый год
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-down">
+                        Деревья очищают воздух, защищают почву и создают комфортную среду, поддерживая здоровье человека и природы.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Блок 6: Эмоциональный блок -->
+    <section class="emotional-block" id="emotional">
+        <!-- Картинки фона -->
+        <img src="./images/wood_emot.png" alt="Фон 1" class="background-image bg-image-1">
+        <img src="./images/wood_emot.png" alt="Фон 2" class="background-image bg-image-2">
+        <img src="./images/wood_emot.png" alt="Фон 3" class="background-image bg-image-3">
+
+        <div class="emotional-block__container"> <!-- ← ДОБАВЬТЕ ЭТОТ DIV -->
+            <!-- Верхний фрейм -->
+            <div class="new-frame-top">
+                <!-- Левый блок -->
+                <div class="new-left-content">
+                    <h2 class="new-main-title">Эмоциональный блок</h2>
+                    <div class="new-offer-frame">
+                        <img src="./images/russ-emoti.png" alt="Иконка" class="new-offer-icon">
+                        <span class="new-offer-text">Статистика эмоционального воздействия</span>
+                    </div>
+                </div>
+                
+                <!-- Правый текст -->
+                <div class="new-right-text">
+                    Эти традиции символизируют уважение к природе, надежду на плодородие и процветание, а также объединяют людей в заботе о будущем и сохранении окружающей среды
+                </div>
+            </div>
+            
+            <!-- Нижний фрейм -->
+            <div class="new-frame-bottom">
+                <div class="bottom-frame">
+                    <div class="top-pos">
+                        <img src="./images/emot_img1.jpg" alt="Иконка" class="new-emot-img">
+                        <div class="text-emot">
+                            <div class="text-emot-zagolovok">
+                                Посади дерево — стань мужчиной
+                            </div>
+                            <div class="text-emot-opisanie">
+                                Мужчина — это не про «бороду отрастил». Это про ответственность. Один мальчик сажает одно дерево — и в этот момент у него появляется что-то своё: живое, растущее, зависимое от него. Раз в год мы проводим ритуал посвящения в мужчины. Отец и сын выходят на землю, берут в руки лопаты и сажают дерево. Не в теории, не в «когда-нибудь», а здесь и сейчас.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="down-pos">
+                        <div class="text-dop-emot">
+                            5 000 ₽ — вклад в лес и в характер ребёнка
+                        </div>
+                        <button class="emotion-btn">Записаться на посвящение</button>
+                    </div>
+                </div>
+                <div class="bottom-frame">
+                    <div class="top-pos">
+                        <img src="./images/emot_img2.jpg" alt="Иконка" class="new-emot-img">
+                        <div class="text-emot">
+                            <div class="text-emot-zagolovok">
+                                Добрая традиция, хорошая семья,<br>крепкое дерево
+                            </div>
+                            <div class="text-emot-opisanie">
+                                Свадьба заканчивается, фото блекнут, торт съели и забыли. Но если в день росписи вы сажаете своё дерево — память становится живой. Каждая семья после ЗАГСа может поехать не в ТЦ, а на свою первую совместную посадку. Дерево растёт вместе с вами: переживает ветра, морозы, засуху. Как и семья: главное — не бросать, ухаживать и возвращаться.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="down-pos">
+                        <div class="text-dop-emot">
+                            5 000 ₽ —  ваша традиция, ваш лес, ваш след
+                        </div>
+                        <button class="emotion-btn">Посадить семейное дерево</button>
+                    </div>
+                </div>
+                <div class="bottom-frame">
+                    <div class="top-pos">
+                        <img src="./images/emot_img3.jpg" alt="Иконка" class="new-emot-img">
+                        <div class="text-emot">
+                            <div class="text-emot-zagolovok">
+                                Роща славы
+                            </div>
+                            <div class="text-emot-opisanie">
+                                Есть вещи, которые словами не лечатся. Когда отец на фронте. Когда его уже нет. Когда ребёнку нужно во что-то упереться, кроме пустоты. Мы создаём Рощу славы — живой мемориал, где дети с мамами сажают деревья в честь своих защитников у каждого дерева — имя. У каждой семьи — место, куда можно приходить, обнимать ствол и говорить то, что не сказано. Дерево растёт. Так же, как растёт ребёнок. И каждый раз, когда он смотрит на крону, он знает: «Папа был. Папа есть в этой земле. И я продолжаю.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="down-pos">
+                        <div class="text-dop-emot">
+                            
+                        </div>
+                        <button class="emotion-btn">Записаться на посвящение</button>
+                    </div>
+                </div>
+            </div>
+        </div> <!-- ← ЗАКРОЙТЕ КОНТЕЙНЕР -->
+    </section>
+
+    <!-- Блок 7: Как это работает -->
+    <section class="how-it-works" id="stages">
+        <div class="how-it-works__container">
+            <!-- Верхний фрейм -->
+            <div class="how-frame how-frame-top">
+                <!-- Левый блок -->
+                <div class="how-left-content">
+                    <h2 class="how-main-title">Как это работает?</h2>
+                    <div class="how-offer-frame">
+                        <span class="how-offer-text">Путь который вам предстоит пройти</span>
+                    </div>
+                </div>
+                
+                <!-- Правый текст -->
+                <div class="how-right-text">
+                    Мы предлагаем удобные варианты оплаты, защищённые транзакции, чтобы сделать процесс приобретения максимально простым и безопасным.
+                </div>
+            </div>
+            
+            <!-- Нижний фрейм с шагами -->
+            <div class="how-frame how-frame-bottom">
+                <!-- Первый фрейм -->
+                <div class="how-bottom-frame">
+                    <img src="./images/step.png" alt="шаги" class="step-img">
+                </div>
+                
+                <!-- Второй фрейм -->
+                <div class="how-bottom-frame">
+                    <div class="step-cont">
+                        <div class="step1">
+                            01
+                        </div>
+                        <div class="text-step">
+                            <div class="top-text-step">
+                                Выбор
+                            </div>
+                            <div class="down-text-step">
+                                Выбери, что ближе для тебя
+                            </div>
+                        </div>
+                    </div>
+                    <div class="step-cont">
+                        <div class="step2">
+                            02
+                        </div>
+                        <div class="text-step">
+                            <div class="top-text-step">
+                                Оплата
+                            </div>
+                            <div class="down-text-step">
+                                Оплати легко и быстро
+                            </div>
+                        </div>
+                    </div>
+                    <div class="step-cont">
+                        <div class="step3">
+                            03
+                        </div>
+                        <div class="text-step">
+                            <div class="top-text-step">
+                                Приглашение
+                            </div>
+                            <div class="down-text-step">
+                                Получи приглашение на посадку 
+                            </div>
+                        </div>
+                    </div>
+                    <div class="step-cont">
+                        <div class="step4">
+                            04
+                        </div>
+                        <div class="text-step">
+                            <div class="top-text-step">
+                                Посадка
+                            </div>
+                            <div class="down-text-step">
+                                Посадите саженцы 
+                            </div>
+                        </div>
+                    </div>
+                    <div class="step-cont">
+                        <div class="step5">
+                            05
+                        </div>
+                        <div class="text-step">
+                            <div class="top-text-step">
+                                Отчёт
+                            </div>
+                            <div class="down-text-step">
+                                Получите отчет о вашей работе
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Блок 8: Наши партнёры -->
+    <section class="partners">
+        <div class="partners__container">
+            <!-- Заголовок -->
+            <h2 class="partners-title">Наши партнёры</h2>
+            
+            <!-- Фрейм для логотипов -->
+            <div class="partners-frame">
+                <!-- Первая строка -->
+                <div class="partners-row">
+                    <div class="partner-item">
+                        <img src="./images/logo1.jpg" alt="шаги" class="logo-partners">
+                    </div>
+                    <div class="partner-item">
+                        <img src="./images/logo2.jpg" alt="шаги" class="logo-partners">
+                    </div>
+                    <div class="partner-item">
+                        <img src="./images/logo3.jpg" alt="шаги" class="logo-partners">
+                    </div>
+                </div>
+                
+                <!-- Вторая строка -->
+                <div class="partners-row">
+                    <div class="partner-item">
+                        <img src="./images/logo4.jpg" alt="шаги" class="logo-partners">
+                    </div>
+                    <div class="partner-item">
+                        <img src="./images/logo5.jpg" alt="шаги" class="logo-partners">
+                    </div>
+                    <div class="partner-item">
+                        <img src="./images/logo6.jpg" alt="шаги" class="logo-partners">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Блок 9: Документы -->
+    <section class="documents" id="trust">
+        <div class="documents__container">
+            <!-- Первый фрейм (шапка) -->
+            <div class="doc-frame doc-frame-1">
+                <!-- Левый блок -->
+                <div class="doc-left-content">
+                    <h2 class="doc-main-title">Документы</h2>
+                    
+                    <!-- Фрейм с текстом -->
+                    <div class="doc-offer-frame">
+                        <span class="doc-offer-text">Наши сертификаты</span>
+                        <svg class="doc-offer-icon" width="14" height="14" viewBox="0 0 14 14" fill="none">
+                            <path d="M5 12H12M12 12L12 5M12 12L5 5" stroke="currentColor" stroke-width="1.5"/>
+                        </svg>
+                    </div>
+                </div>
+                
+                <!-- Правый текст -->
+                <div class="doc-right-text">
+                    Здесь представлены сертификаты, подтверждающие качество, безопасность и соответствие продукции и услуг стандартам.
+                </div>
+            </div>
+            
+            <!-- Второй фрейм -->
+            <div class="doc-frame doc-frame-2">
+                <!-- Основной контейнер с документами в строку -->
+                <div class="doc-main-item">
+                    <!-- Документ 1 -->
+                    <div class="doc-item">
+                        <img src="./images/doc1.png" alt="Документ 1" class="doc-image">
+                        <p class="doc-item-description">Сертификат соответствия сортовой пренадлежности</p>
+                    </div>
+                    
+                    <!-- Документ 2 -->
+                    <div class="doc-item">
+                        <img src="./images/doc2.png" alt="Документ 2" class="doc-image">
+                        <p class="doc-item-description">Официальное разрешение на ведение лесопосадочных работ</p>
+                    </div>
+                    
+                    <!-- Документ 3 -->
+                    <div class="doc-item">
+                        <img src="./images/doc3.png" alt="Документ 3" class="doc-image">
+                        <p class="doc-item-description">Сертификат экологической безопасности</p>
+                    </div>
+                    
+                    <!-- Документ 4 -->
+                    <div class="doc-item">
+                        <img src="./images/doc4.png" alt="Документ 4" class="doc-image">
+                        <p class="doc-item-description">Лицензия на импорт посадочного материала</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Блок 10: Форма -->
+    <section class="contacts-form">
+        <div class="contacts-main">
+            <div class="contacts-main__container">
+                <!-- Заголовок -->
+                <h2 class="contacts-title">Форма для обратной связи</h2>
+                
+                <!-- Фрейм для формы -->
+                <form class="contacts-form-frame" id="contactForm"> <!-- ДОБАВЛЕН ID ЗДЕСЬ -->
+                    <!-- Верхний фрейм с полями ввода -->
+                    <div class="form-inputs-frame">
+                        <!-- Заголовок -->
+                        <h3 class="form-title">Мы будем рады вашей заявке</h3>
+
+                        <!-- Поле 1 -->
+                        <div class="input-group">
+                            <label class="input-label">Имя</label>
+                            <input type="text" class="text-input" placeholder="Введите ваше имя" name="name"> <!-- ДОБАВЛЕН NAME -->
+                        </div>
+                        
+                        <!-- Поле 2 -->
+                        <div class="input-group">
+                            <label class="input-label">Email</label>
+                            <input type="email" class="text-input" placeholder="Введите ваш email" name="email"> <!-- ДОБАВЛЕН NAME -->
+                        </div>
+                        
+                        <!-- Поле 3 -->
+                        <div class="input-group">
+                            <label class="input-label">Телефон</label>
+                            <input type="tel" class="text-input" placeholder="Введите ваш телефон" name="phone"> <!-- ДОБАВЛЕН NAME -->
+                        </div>
+                    
+                        <!-- Нижний фрейм с чекбоксом -->
+                        <div class="form-checkbox-frame">
+                            <div class="checkbox-group">
+                                <input type="checkbox" id="agreement" class="checkbox" name="agreement"> <!-- ДОБАВЛЕН ID И NAME -->
+                                <label for="agreement" class="checkbox-label">Я согласен на обработку персональных данных</label>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Нижний фрейм с текстом и кнопкой -->
+                    <div class="form-bottom-frame">
+                        <button type="submit" class="submit-button">Отправить</button>
+                        <a href="#" class="privacy-link">Политика конфиденциальности</a>
+                    </div>
+                </form>
+                
+                <!-- Место для сообщений ответа -->
+                <div id="responseMessage"></div> <!-- ДОБАВЛЕН DIV ДЛЯ СООБЩЕНИЙ -->
+
+            </div>
+        </div>
+        <!-- Фоновое изображение ПОСЛЕ формы -->
+        <img src="./images/wood_form.png" alt="Фон" class="contacts-bg-image">
+    </section>
+
+    <!-- Футер + Copyright -->
+    <section class="footer-section">
+        <div class="contacts-footer">
+            <div class="contacts-footer__container">
+                <div class="contact-frame">
+                    <!-- Первый фрейм с контактами -->
+                    <div class="footer-contacts-frame">
+                        <!-- Телефон 1 -->
+                        <div class="contact-item">
+                            <div class="contact-label">Телефон</div>
+                            <div class="contact-phone">
+                                <img src="./images/phone.svg" alt="Телефон" class="contact-icon">
+                                <span class="sviaz">8 999 999 99-99</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Второй фрейм с контактами -->
+                    <div class="footer-contacts-frame">
+                        <!-- E-mail -->
+                        <div class="contact-item">
+                            <div class="contact-label">E-mail</div>
+                            <div class="contact-phone">
+                                <img src="./images/mail.svg" alt="E-mail" class="contact-icon">
+                                <span class="sviaz">opop@gmail.com</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Текст "Политика конфиденциальности" -->
+                <a href="#" class="privacy-text"></a>
+
+                <!-- Правый блок с текстом и соцсетями -->
+                <div class="footer-right-content">
+                    
+                    <!-- Фрейм с текстом и соцсетями -->
+                    <div class="socials-frame">
+                        <!-- Текст -->
+                        <div class="socials-text">Соцсети</div>
+                        
+                        <!-- Фрейм с кнопками соцсетей -->
+                        <div class="socials-buttons">
+                            <button class="social-btn">
+                                <img src="./images/icon_tg.svg" alt="VK" class="social-icon">
+                            </button>
+                            <button class="social-btn">
+                                <img src="./images/icon_wk.svg" alt="Telegram" class="social-icon">
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- МИНИ БЛОК -->
+        <section class="copyright">
+            <div class="copyright__container">
+                © Copyright - All Rights Reserved
+            </div>
+        </section>
+    </section>
+
+
+
+    <script src="script.js" type="module"></script>
+</body>
+</html>
