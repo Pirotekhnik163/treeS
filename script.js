@@ -178,7 +178,10 @@ document.addEventListener('DOMContentLoaded', handleFixedHeader);
 // Функция для загрузки городов из базы данных
 async function loadCities() {
     try {
-        const response = await fetch('https://backendtrees-production.up.railway.app/cities');
+        console.log("Пытаюсь загрузить города с бэкенда...");
+        const response = await fetch('https://backendtrees-production.up.railway.app/cities/get');
+        
+        console.log("Статус ответа:", response.status);
         
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
@@ -189,7 +192,15 @@ async function loadCities() {
         return cities;
     } catch (error) {
         console.error('Ошибка при загрузке городов:', error);
-        return null;
+        
+        // Возвращаем города по умолчанию на случай ошибки
+        return [
+            { id: 1, name: "Москва", slug: "moscow" },
+            { id: 2, name: "Санкт-Петербург", slug: "petersburg" },
+            { id: 3, name: "Казань", slug: "kazan" },
+            { id: 4, name: "Новосибирск", slug: "novosibirsk" },
+            { id: 5, name: "Екатеринбург", slug: "ekaterinburg" }
+        ];
     }
 }
 
@@ -830,5 +841,6 @@ document.addEventListener('DOMContentLoaded', aggressiveTiltAnimation);
 // document.addEventListener('DOMContentLoaded', initStrongTiltAnimation);
 
 // document.addEventListener('DOMContentLoaded', dynamicTiltAnimation);
+
 
 
