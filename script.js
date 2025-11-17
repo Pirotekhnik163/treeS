@@ -323,20 +323,133 @@ async function initDropdown() {
     }
 }
 
+function initPaymentButton() {
+    const paymentButton = document.querySelector('.payment-button');
+    
+    if (!paymentButton) {
+        console.log('Кнопка оплаты не найдена');
+        return;
+    }
+    
+    paymentButton.addEventListener('click', async function(e) {
+        e.preventDefault();
+        
+        // Получаем выбранные значения
+        const options = getSelectedOptions();
+        
+        // Валидация
+        if (!options.city) {
+            alert('Пожалуйста, выберите город');
+            return;
+        }
+        
+        if (options.seedlings === 0) {
+            alert('Пожалуйста, укажите количество саженцев');
+            return;
+        }
+        
+        try {
+            // Показываем индикатор загрузки
+            paymentButton.textContent = 'Отправка...';
+            paymentButton.disabled = true;
+            
+            // Отправляем данные на бэкенд
+            await submitShareForm(options.city, options.special, options.price);
+            
+            // Успешная отправка
+            alert('Данные успешно отправлены! ID заявки будет в консоли');
+            console.log('Заявка создана:', options);
+            
+            // Можно очистить форму или выполнить другие действия
+            // resetShareForm();
+            
+        } catch (error) {
+            console.error('Ошибка при отправке заявки:', error);
+            alert('Ошибка при отправке данных: ' + error.message);
+        } finally {
+            // Восстанавливаем кнопку
+            paymentButton.textContent = 'Перейти к оплате';
+            paymentButton.disabled = false;
+        }
+    });
+}
+
 // Инициализация при загрузке
 document.addEventListener('DOMContentLoaded', function() {
     console.log("DOM полностью загружен. Инициализация скриптов...");
     
-    // Инициализируем dropdown
+    // Инициализируем dropdown с городами
     initDropdown();
+    
+    // Инициализируем кнопку оплаты
+    initPaymentButton();
     
     // Остальная инициализация...
     handleFixedHeader();
     initCalculator();
-    // другие инициализации...
+    initSpecialButtons();
 });
 
+// Функция для отправки данных share на бэкенд
+async function submitShareForm(city, special, price) {
+    try {
+        const shareData = {
+            city: city,
+            special: special,
+            price: price
+        };
 
+        console.log("Отправка данных share:", shareData);
+
+        const response = await fetch('https://backendtrees-production.up.railway.app/share/create', {
+            method: 'POST',
+            headers: { 
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            },
+            body: JSON.stringify(shareData)
+        });
+
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        const result = await response.json();
+        console.log("Share создан успешно:", result);
+        return result;
+    } catch (error) {
+        console.error('Ошибка при отправке share:', error);
+        throw error;
+    }
+}
+
+// Функция для получения выбранных значений из формы
+function getSelectedOptions() {
+    // Получаем выбранный город
+    const selectedCityItem = document.querySelector('.dropdown-item.selected');
+    const selectedCity = selectedCityItem ? selectedCityItem.textContent : '';
+    
+    // Получаем выбранную спецопцию
+    const selectedSpecialItem = document.querySelector('.special-option-btn.active');
+    const selectedSpecial = selectedSpecialItem ? selectedSpecialItem.textContent : '';
+    
+    // Получаем количество участников
+    const participantsInput = document.querySelector('.participants-input');
+    const participantsCount = participantsInput ? parseInt(participantsInput.value) || 0 : 0;
+    
+    // Получаем количество саженцев и рассчитываем цену
+    const seedlingsInput = document.querySelector('.seedlings-input');
+    const seedlingsCount = seedlingsInput ? parseInt(seedlingsInput.value) || 0 : 0;
+    const price = seedlingsCount * 100; // 100 руб за саженец
+    
+    return {
+        city: selectedCity,
+        special: selectedSpecial,
+        participants: participantsCount,
+        seedlings: seedlingsCount,
+        price: price
+    };
+}
 
 
 
@@ -599,6 +712,8 @@ function initSpecialButtons() {
             
             // Добавляем active к нажатой кнопке
             this.classList.add('active');
+            
+            console.log('Выбрана спецопция:', this.textContent);
         });
     });
 }
@@ -863,6 +978,7 @@ document.addEventListener('DOMContentLoaded', aggressiveTiltAnimation);
 // document.addEventListener('DOMContentLoaded', initStrongTiltAnimation);
 
 // document.addEventListener('DOMContentLoaded', dynamicTiltAnimation);
+
 
 
 
