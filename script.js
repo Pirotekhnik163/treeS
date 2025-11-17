@@ -209,14 +209,21 @@ function populateCitiesDropdown(cities) {
         return;
     }
     
-    // Очищаем существующие элементы (кроме первого, если он placeholder)
+    // Очищаем меню полностью (включая сообщение о загрузке)
     dropdownMenu.innerHTML = '';
+    
+    // Если cities пустой, показываем сообщение
+    if (!cities || cities.length === 0) {
+        dropdownMenu.innerHTML = '<div class="dropdown-loading">Городы не найдены</div>';
+        return;
+    }
     
     // Добавляем города из базы данных
     cities.forEach(city => {
         const cityElement = document.createElement('div');
         cityElement.className = 'dropdown-item';
         cityElement.setAttribute('data-value', city.slug);
+        cityElement.setAttribute('data-id', city.id); // Добавляем ID из БД
         cityElement.textContent = city.name;
         
         dropdownMenu.appendChild(cityElement);
@@ -814,6 +821,7 @@ document.addEventListener('DOMContentLoaded', aggressiveTiltAnimation);
 // document.addEventListener('DOMContentLoaded', initStrongTiltAnimation);
 
 // document.addEventListener('DOMContentLoaded', dynamicTiltAnimation);
+
 
 
 
