@@ -125,7 +125,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 headers: { 
                     'Content-Type': 'application/json',
                     'Accept': 'application/json'
-                }
+                },
+                body: JSON.stringify(formData)
             });
 
             console.log("Получен ответ от сервера.");
@@ -703,6 +704,7 @@ document.addEventListener('DOMContentLoaded', aggressiveTiltAnimation);
 // document.addEventListener('DOMContentLoaded', initStrongTiltAnimation);
 
 // document.addEventListener('DOMContentLoaded', dynamicTiltAnimation);
+
 
 
 
