@@ -213,8 +213,8 @@ function populateCitiesDropdown(cities) {
         return;
     }
     
-    if (!cities) {
-        console.log("Используем города по умолчанию из HTML");
+    if (!cities || cities.length === 0) {
+        console.log("Нет городов для отображения");
         return;
     }
     
@@ -225,9 +225,14 @@ function populateCitiesDropdown(cities) {
     cities.forEach(city => {
         const cityElement = document.createElement('div');
         cityElement.className = 'dropdown-item';
-        cityElement.setAttribute('data-value', city.slug);
+        
+        // Используем name из CitiesEntity и создаем slug если его нет
+        const cityName = city.name || city.city;
+        const citySlug = city.slug || cityName.toLowerCase().replace(/\s+/g, '-');
+        
+        cityElement.setAttribute('data-value', citySlug);
         cityElement.setAttribute('data-id', city.id);
-        cityElement.textContent = city.name;
+        cityElement.textContent = cityName;
         
         dropdownMenu.appendChild(cityElement);
     });
@@ -237,68 +242,85 @@ function populateCitiesDropdown(cities) {
 
 // Управление выпадающим списком
 async function initDropdown() {
-    const selectWrappers = document.querySelectorAll('.select-wrapper');
-    
-    // Загружаем города из базы данных
-    const cities = await loadCities();
-    
-    selectWrappers.forEach(wrapper => {
-        const selectButton = wrapper.querySelector('.select-button');
-        const dropdownMenu = wrapper.querySelector('.dropdown-menu');
-        const buttonText = wrapper.querySelector('.button-text'); // ИСПРАВЛЕНО
+    try {
+        const selectWrappers = document.querySelectorAll('.select-wrapper');
         
-        // Заполняем выпадающий список городами из БД (если загрузились)
-        if (cities) {
-            populateCitiesDropdown(cities);
+        if (selectWrappers.length === 0) {
+            console.log('Dropdown элементы не найдены');
+            return;
         }
         
-        // Обновляем обработчики событий для новых элементов
-        const dropdownItems = wrapper.querySelectorAll('.dropdown-item');
+        // Загружаем города из базы данных
+        const cities = await loadCities();
+        console.log("Получены города:", cities);
         
-        // Открытие/закрытие по клику на кнопку
-        selectButton.addEventListener('click', function(e) {
-            e.stopPropagation();
-            wrapper.classList.toggle('active');
-        });
-        
-        // Выбор элемента из списка
-        dropdownItems.forEach(item => {
-            item.addEventListener('click', function() {
-                const value = this.getAttribute('data-value');
-                const text = this.textContent;
-                
-                // Обновляем текст кнопки
-                buttonText.textContent = text;
-                
-                // Добавляем класс выбранного элемента
-                dropdownItems.forEach(i => i.classList.remove('selected'));
-                this.classList.add('selected');
-                
-                // Закрываем меню
-                wrapper.classList.remove('active');
-                
-                console.log('Выбран город:', value, text);
+        selectWrappers.forEach(wrapper => {
+            const selectButton = wrapper.querySelector('.select-button');
+            const dropdownMenu = wrapper.querySelector('.dropdown-menu');
+            const buttonText = wrapper.querySelector('.button-text');
+            
+            if (!selectButton || !dropdownMenu || !buttonText) {
+                console.warn('Не все элементы dropdown найдены в wrapper');
+                return;
+            }
+            
+            // Заполняем выпадающий список городами из БД
+            populateCitiesDropdown(cities);
+            
+            // Обновляем обработчики событий для новых элементов
+            const dropdownItems = wrapper.querySelectorAll('.dropdown-item');
+            
+            console.log(`Найдено ${dropdownItems.length} элементов в dropdown`);
+            
+            // Открытие/закрытие по клику на кнопку
+            selectButton.addEventListener('click', function(e) {
+                e.stopPropagation();
+                wrapper.classList.toggle('active');
+                console.log('Dropdown clicked, active:', wrapper.classList.contains('active'));
+            });
+            
+            // Выбор элемента из списка
+            dropdownItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    const value = this.getAttribute('data-value');
+                    const text = this.textContent;
+                    
+                    // Обновляем текст кнопки
+                    buttonText.textContent = text;
+                    
+                    // Добавляем класс выбранного элемента
+                    dropdownItems.forEach(i => i.classList.remove('selected'));
+                    this.classList.add('selected');
+                    
+                    // Закрываем меню
+                    wrapper.classList.remove('active');
+                    
+                    console.log('Выбран город:', value, text);
+                });
             });
         });
-    });
-    
-    // Закрытие при клике вне меню (общий обработчик)
-    document.addEventListener('click', function(e) {
-        selectWrappers.forEach(wrapper => {
-            if (!wrapper.contains(e.target)) {
-                wrapper.classList.remove('active');
+        
+        // Закрытие при клике вне меню (общий обработчик)
+        document.addEventListener('click', function(e) {
+            selectWrappers.forEach(wrapper => {
+                if (!wrapper.contains(e.target)) {
+                    wrapper.classList.remove('active');
+                }
+            });
+        });
+        
+        // Закрытие при нажатии Escape
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                selectWrappers.forEach(wrapper => {
+                    wrapper.classList.remove('active');
+                });
             }
         });
-    });
-    
-    // Закрытие при нажатии Escape
-    document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape') {
-            selectWrappers.forEach(wrapper => {
-                wrapper.classList.remove('active');
-            });
-        }
-    });
+        
+    } catch (error) {
+        console.error('Ошибка в initDropdown:', error);
+    }
 }
 
 // Инициализация при загрузке
@@ -841,6 +863,7 @@ document.addEventListener('DOMContentLoaded', aggressiveTiltAnimation);
 // document.addEventListener('DOMContentLoaded', initStrongTiltAnimation);
 
 // document.addEventListener('DOMContentLoaded', dynamicTiltAnimation);
+
 
 
 
