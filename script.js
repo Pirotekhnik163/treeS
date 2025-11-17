@@ -493,61 +493,61 @@ window.addEventListener('scroll', function() {
 
 
 
-// Управление выпадающим списком
-function initDropdown() {
-    const selectWrappers = document.querySelectorAll('.select-wrapper');
+// // Управление выпадающим списком
+// function initDropdown() {
+//     const selectWrappers = document.querySelectorAll('.select-wrapper');
     
-    selectWrappers.forEach(wrapper => {
-        const selectButton = wrapper.querySelector('.select-button');
-        const dropdownMenu = wrapper.querySelector('.dropdown-menu');
-        const dropdownItems = wrapper.querySelectorAll('.dropdown-item');
-        const buttonText = wrapper.querySelector('.button-text');
+//     selectWrappers.forEach(wrapper => {
+//         const selectButton = wrapper.querySelector('.select-button');
+//         const dropdownMenu = wrapper.querySelector('.dropdown-menu');
+//         const dropdownItems = wrapper.querySelectorAll('.dropdown-item');
+//         const buttonText = wrapper.querySelector('.button-text');
         
-        // Открытие/закрытие по клику на кнопку
-        selectButton.addEventListener('click', function(e) {
-            e.stopPropagation();
-            wrapper.classList.toggle('active');
-        });
+//         // Открытие/закрытие по клику на кнопку
+//         selectButton.addEventListener('click', function(e) {
+//             e.stopPropagation();
+//             wrapper.classList.toggle('active');
+//         });
         
-        // Выбор элемента из списка
-        dropdownItems.forEach(item => {
-            item.addEventListener('click', function() {
-                const value = this.getAttribute('data-value');
-                const text = this.textContent;
+//         // Выбор элемента из списка
+//         dropdownItems.forEach(item => {
+//             item.addEventListener('click', function() {
+//                 const value = this.getAttribute('data-value');
+//                 const text = this.textContent;
                 
-                // Обновляем текст кнопки
-                buttonText.textContent = text;
+//                 // Обновляем текст кнопки
+//                 buttonText.textContent = text;
                 
-                // Добавляем класс выбранного элемента
-                dropdownItems.forEach(i => i.classList.remove('selected'));
-                this.classList.add('selected');
+//                 // Добавляем класс выбранного элемента
+//                 dropdownItems.forEach(i => i.classList.remove('selected'));
+//                 this.classList.add('selected');
                 
-                // Закрываем меню
-                wrapper.classList.remove('active');
+//                 // Закрываем меню
+//                 wrapper.classList.remove('active');
                 
-                // Можно добавить логику для использования выбранного значения
-                console.log('Выбран город:', value, text);
-            });
-        });
+//                 // Можно добавить логику для использования выбранного значения
+//                 console.log('Выбран город:', value, text);
+//             });
+//         });
         
-        // Закрытие при клике вне меню
-        document.addEventListener('click', function(e) {
-            if (!wrapper.contains(e.target)) {
-                wrapper.classList.remove('active');
-            }
-        });
+//         // Закрытие при клике вне меню
+//         document.addEventListener('click', function(e) {
+//             if (!wrapper.contains(e.target)) {
+//                 wrapper.classList.remove('active');
+//             }
+//         });
         
-        // Закрытие при нажатии Escape
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape') {
-                wrapper.classList.remove('active');
-            }
-        });
-    });
-}
+//         // Закрытие при нажатии Escape
+//         document.addEventListener('keydown', function(e) {
+//             if (e.key === 'Escape') {
+//                 wrapper.classList.remove('active');
+//             }
+//         });
+//     });
+// }
 
-// Инициализация при загрузке
-document.addEventListener('DOMContentLoaded', initDropdown);
+// // Инициализация при загрузке
+// document.addEventListener('DOMContentLoaded', initDropdown);
 
 
 
@@ -830,4 +830,5 @@ document.addEventListener('DOMContentLoaded', aggressiveTiltAnimation);
 // document.addEventListener('DOMContentLoaded', initStrongTiltAnimation);
 
 // document.addEventListener('DOMContentLoaded', dynamicTiltAnimation);
+
 
